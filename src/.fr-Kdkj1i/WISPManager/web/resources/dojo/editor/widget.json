@@ -1,0 +1,34 @@
+{
+    'name': 'Rich Text Editor',
+    'type': 'dojo dijit',
+    'jmakiVersion' : '1.0',
+    'version' : '1.0',
+    'image': 'images/dojo-editor.jpg',
+    'url' : 'http://www.dojotoolkit.org',
+    'description': 'This widget is a rich text editor component.',
+    'value': {'required': false, 'type': 'STRING', 'defaultValue': 'Edit Me Please'},
+    'args': [
+        {'toolbar':{'type':'STRING',
+            'description': 'The toolbar type.',
+                'values': [
+                    {'name' : 'Small', 'value' : 'small', 'description' : 'Small width toolbar.'},
+                    {'name' : 'Medium', 'value' : 'small', 'description' : 'Medium width toolbar.'},
+                    {'name' : 'Full', 'value' : 'small', 'description' : 'Full width toolbar. Over 700px.'}
+                  ],
+                 'defaultValue': 'small'
+              }
+           }
+    	],
+     'config' : {
+          'type' :
+           { 'id' : 'dojo',
+             'libs' : [
+                   '../resources/libs/dojo/v0.4.3/djd43.js'
+               ],
+               'preload' : 'if (typeof djd43_config ==\'undefined\') djd43_config = { parseWidgets: false, searchIds: [] };',
+               'resources' : [
+                 '../resources/libs/dojo/v0.4.3/src'
+               ]
+         }
+        }   	
+}

@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+
+    <!-- Page controllers beans -->
+    <managed-bean>
+        <managed-bean-name>radiusController</managed-bean-name>
+        <managed-bean-class>controller.RadiusController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ticketController</managed-bean-name>
+        <managed-bean-class>controller.TicketController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>authenticationController</managed-bean-name>
+        <managed-bean-class>security.AuthenticationController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean> 
+    <managed-bean>
+        <managed-bean-name>clienteController</managed-bean-name>
+        <managed-bean-class>controller.ClienteController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>    
+    <managed-bean>
+        <managed-bean-name>webSurferController</managed-bean-name>
+        <managed-bean-class>controller.WebSurferController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>menuController</managed-bean-name>
+        <managed-bean-class>controller.MenuController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>    
+    
+    
+    
+    <!-- Entities bean -->
+    <managed-bean>
+        <managed-bean-name>radius</managed-bean-name>
+        <managed-bean-class>entities.Radius</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>user</managed-bean-name>
+        <managed-bean-class>entities.User</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>cliente</managed-bean-name>
+        <managed-bean-class>entities.Cliente</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>    
+    <managed-bean>
+        <managed-bean-name>ticket</managed-bean-name>
+        <managed-bean-class>entities.Ticket</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>    
+    <managed-bean>
+        <managed-bean-name>websurfer</managed-bean-name>
+        <managed-bean-class>entities.WebSurfer</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>    
+    
+
+    <!-- Converters class -->
+    <managed-bean>
+        <managed-bean-name>radiusConverter</managed-bean-name>
+        <managed-bean-class>converter.RadiusConverter</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>clienteConverter</managed-bean-name>
+        <managed-bean-class>converter.ClienteConverter</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>webSurferConverter</managed-bean-name>
+        <managed-bean-class>converter.WebSurferConverter</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ticketConverter</managed-bean-name>
+        <managed-bean-class>converter.TicketConverter</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+        <managed-bean>
+        <managed-bean-name>userConverter</managed-bean-name>
+        <managed-bean-class>converter.UserConverter</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+     <!-- Persistence controllers beans -->
+    <managed-bean>
+        <managed-bean-name>radiusJpaController</managed-bean-name>
+        <managed-bean-class>jpa.RadiusJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>clienteJpaController</managed-bean-name>
+        <managed-bean-class>jpa.ClienteJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ticketJpaController</managed-bean-name>
+        <managed-bean-class>jpa.TicketJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>webSurferJpaController</managed-bean-name>
+        <managed-bean-class>jpa.WebSurferJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>userJpaController</managed-bean-name>
+        <managed-bean-class>jpa.UserJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+</faces-config>

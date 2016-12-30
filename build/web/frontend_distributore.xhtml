@@ -1,0 +1,126 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+            <style>body .ui-widget{font-size: 0.8em;}</style>
+            <h:form id="form_ticket_data">                
+                <p:panel id="panel_dati" header="Dati dell'utente finale (WebSurfer)" toggleable="true">
+                        <p:panelGrid id="vendor_fields" columns="3">
+                            <h:outputText value="#{user.utente}"/>
+                            <h:outputText value="#{cliente.denominazione}" />                            
+                            <h:outputText value="#{ticketController.reportError}"/>
+                        </p:panelGrid>
+                            
+                    <p:message for="email" />
+                    <p:message for="denominazione" />
+                                
+                    <p:panelGrid id="websurfer_fields" columns="2" >                        
+                            <h:outputText value="web surfer"/>
+                            <p:inputText id="denominazione" label="Utente finale" required="true" value="#{ticketController.webSurfer.denominazione}"
+                                         requiredMessage="inserisci il nome dell'utente finale"
+                                         validatorMessage="formato del nome non valido"/>
+                            
+                            
+                            <h:outputText value="note"/>
+                            <p:inputText id="note" label="Note" value="#{ticketController.webSurfer.note}"/>
+
+                            
+                            <h:outputText value="email"/>
+                            <p:inputText id="email" label="Email" value="#{ticketController.webSurfer.email}" required="true"
+                                         requiredMessage="inserisci un indirizzo email per la notifica"
+                                         validatorMessage="indirizzo email in formato non valido">
+                                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
+                            
+                            <h:outputText value="telefono"/>
+                            <p:inputText id="telefono" label="Telefono" value="#{ticketController.webSurfer.telefono}"/>
+                        </p:panelGrid>
+                        <p:panelGrid id="ticket_date" columns="4">                                                
+                            <h:outputText value="Data emissione"/>
+                            <p:calendar id="data_emissione" value="#{ticketController.ticket.dataEmissione}"/>
+                            
+                            <h:outputText value="Data scadenza"/>
+                            <p:calendar id="data_scadenza"  value="#{ticketController.ticket.dataScadenza}"/>                            
+                        </p:panelGrid>        
+                        
+                        <p:commandButton id="create_ticket_new" value="Crea ticket" 
+                                             actionListener="#{ticketController.create_ticket}"                                              
+                                             update=":form_ticket_data" ajax="false"/>                        
+
+                        <p:commandButton id="list_ticket" value="Elenca ticket attivi" 
+                                             actionListener="#{ticketController.get_all_active_ticket}"                                              
+                                             update=":form_ticket_data" ajax="false" immediate="true"/>                        
+                        <!--p:commandButton id="change_password" value="Password di accesso" update=":form_ticket_data" oncomplete="dlgPassword.show()"  immediate="true"/--> 
+
+                        
+                </p:panel>
+                
+                <p:panel id="panel_ticket_ricerca" header="Ricerca" toggleable="true">                            
+                        <p:autoComplete id="ricerca_ticket" 
+                                    value="#{ticketController.ticket_select}"   
+                                    onselect="{ticketController.select_ticket()}"
+                                    completeMethod="#{ticketController.autocompleteTicket_cliente}"
+                                    var="tck" itemLabel="#{tck.websurfer.denominazione}" itemValue="#{tck}" 
+                                    converter="#{ticketConverter}"                                     
+                                    forceSelection="false"
+                                    immediate="false">
+                            <p:ajax event="itemSelect" listener="#{ticketController.select_ticket}" 
+                                    update=":form_ticket_data:websurfer_fields :form_ticket_data:panel_ticket_ricerca :form_ticket_data:dlgTicket :form_ticket_data:dlgConfermaEliminazione"/> 
+                        </p:autoComplete>
+                        <p:dataTable id="table_ticket_data" var="tck" value="#{ticketController.listTicket}" rowKey="#{tck.id}" paginator="true" rows="10" selection="#{ticketController.ticket_select}" selectionMode="single">   
+                            <p:ajax event="rowSelect" listener="#{ticketController.onRowSelectTicket}"      update=":form_ticket_data:websurfer_fields :form_ticket_data:dlgTicket :form_ticket_data:dlgConfermaEliminazione" />  
+                            <p:ajax event="rowUnselect" listener="#{ticketController.onRowUnselectTicket}"  update=":form_ticket_data:websurfer_fields :form_ticket_data:dlgTicket :form_ticket_data:dlgConfermaEliminazione" />  
+                
+                            <p:column selectionMode="single" style="width:3%" />
+                            <p:column headerText="Web surfer">#{tck.denominazione}</p:column>  
+                            <p:column headerText="Email">#{tck.email}</p:column>
+                            <p:column headerText="Telefono">#{tck.websurfer.telefono}</p:column>
+                            <p:column headerText="Seriale">#{tck.seriale} (#{tck.stato})</p:column>                              
+                            <p:column headerText="Note">#{tck.note}</p:column>  
+                            <p:column headerText="Utente">#{tck.login}</p:column>  
+                            <p:column headerText="Password">#{tck.password}</p:column>                              
+                            <p:column headerText="Emissione">
+                                <h:outputText value="#{tck.dataEmissione}" >
+                                    <f:convertDateTime locale="it_IT" dateStyle="full"/>
+                                </h:outputText>                                
+                            </p:column>  
+                            <p:column headerText="Scadenza">
+                                <h:outputText value="#{tck.dataScadenza}" >
+                                    <f:convertDateTime locale="it_IT" dateStyle="full"/>
+                                </h:outputText>                                
+                            </p:column>  
+                            <f:facet name="header">  
+                                <p:commandButton id="print_ticket" value="Stampa" oncomplete="dlgTicket.show()" immediate="true" /> 
+                                <p:commandButton id="delete_ticket" value="Elimina" oncomplete="dlgConfermaEliminazione.show()"  immediate="true"/> 
+                            </f:facet>
+                        </p:dataTable>                         
+                </p:panel>
+
+                <p:dialog id="dlgConfermaEliminazione" header="Conferma eliminazione" widgetVar="dlgConfermaEliminazione" resizable="false">  
+                    <p>Elimino il ticket <h:outputText value="#{ticketController.ticket_select.login}"/> (<h:outputText value="#{ticketController.ticket_select.note}"/>)?</p>
+                    <h:panelGrid columns="2" style="margin-bottom:10px">                       
+                        <p:commandButton value="Conferma" actionListener="#{ticketController.delete_ticket}" oncomplete="dlgConfermaEliminazione.hide()" update=":form_ticket_data" immediate="true"/>  
+                        <p:commandButton value="Annulla" oncomplete="dlgConfermaEliminazione.hide()" immediate="true"/>  
+                    </h:panelGrid>                  
+                </p:dialog>                                
+
+                <p:dialog   id="dlgTicket" header="Riepilogo ticket" widgetVar="dlgTicket" resizable="false">                      
+                    <p:inputTextarea id="reportTicket" rows="15" cols="40" value="#{ticketController.reportTicket}" />  
+                        <h:commandButton value="Print" type="button">  
+                            <p:printer target="reportTicket" />  
+                        </h:commandButton>                                                       
+                </p:dialog>                                                             
+
+                <!--
+                <p:dialog header="Cambia Password" widgetVar="dlgPassword" resizable="false">                  
+                    <h:panelGrid columns="1" style="margin-bottom:10px">                       
+                        <p:inputText id="password" value="{user.password}" immediate="true"/>  
+                        <p:commandButton id="aggiorna" action="{ticketController.update_password_utente()}" value="Aggiorna" ajax="false" oncomplete="dlgPassword.hide()" immediate="true"/>                          
+                    </h:panelGrid>                                 
+                </p:dialog>
+                -->        
+            </h:form>
+            
+
+</ui:composition>

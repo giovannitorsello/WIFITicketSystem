@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="1.2" 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">    
+
+   <managed-bean>
+        <managed-bean-name>personaFisicaJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.PersonaFisicaJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+   
+    <managed-bean>
+        <managed-bean-name>personaFisicaController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.PersonaFisicaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>       
+        <converter-for-class>wispmanager.entities.PersonaFisica</converter-for-class>
+        <converter-class>wispmanager.page.PersonaFisicaConverter</converter-class>
+    </converter>
+
+
+   <managed-bean>
+        <managed-bean-name>personaGiuridicaJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.PersonaGiuridicaJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>personaGiuridicaController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.PersonaGiuridicaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+
+    <converter>
+        <converter-for-class>wispmanager.entities.PersonaGiuridica</converter-for-class>
+        <converter-class>wispmanager.page.PersonaGiuridicaConverter</converter-class>
+    </converter>
+
+    <managed-bean>
+        <managed-bean-name>clienteJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.ClienteJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>clienteController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.ClienteController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>
+        <converter-for-class>wispmanager.entities.Cliente</converter-for-class>
+        <converter-class>wispmanager.page.ClienteConverter</converter-class>
+    </converter>
+
+    <managed-bean>
+        <managed-bean-name>rappresentanteJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.RappresentanteJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>rappresentanteController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.RappresentanteController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>
+        <converter-for-class>wispmanager.entities.Rappresentante</converter-for-class>
+        <converter-class>wispmanager.page.RappresentanteConverter</converter-class>
+    </converter>
+
+    <managed-bean>
+        <managed-bean-name>fornitoreJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.FornitoreJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>fornitoreController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.FornitoreController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>
+        <converter-for-class>wispmanager.entities.Fornitore</converter-for-class>
+        <converter-class>wispmanager.page.FornitoreConverter</converter-class>
+    </converter>
+
+    <managed-bean>
+        <managed-bean-name>servizioJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.ServizioJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>servizioController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.ServizioController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>        
+        <converter-for-class>wispmanager.entities.Servizio</converter-for-class>
+        <converter-class>wispmanager.page.ServizioConverter</converter-class>
+    </converter>
+
+
+    <managed-bean>
+        <managed-bean-name>serieTicketJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.SerieTicketJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>serieTicketController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.SerieTicketController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>
+        <converter-for-class>wispmanager.entities.SerieTicket</converter-for-class>
+        <converter-class>wispmanager.page.SerieTicketConverter</converter-class>
+    </converter>
+
+<managed-bean>
+        <managed-bean-name>numerazioneFoniaJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.NumerazioneFoniaJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+
+    <converter>
+        <converter-for-class>wispmanager.entities.NumerazioneFonia</converter-for-class>
+        <converter-class>wispmanager.page.NumerazioneFoniaConverter</converter-class>
+    </converter>
+
+
+    <managed-bean>
+        <managed-bean-name>ticketJpaController</managed-bean-name>
+        <managed-bean-class>wispmanager.entities.jpa.TicketJpaController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>ticketController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.TicketController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <converter>
+        <converter-for-class>wispmanager.entities.Ticket</converter-for-class>
+        <converter-class>wispmanager.page.TicketConverter</converter-class>
+    </converter>
+
+    <managed-bean>
+        <managed-bean-name>LoginController</managed-bean-name>
+        <managed-bean-class>wispmanager.page.LoginController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+
+    <navigation-rule>
+        <from-view-id>/login.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>fail</from-outcome>
+            <to-view-id>/login.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/login.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/home.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/modules/personafisica.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>personafisica</from-outcome>
+            <to-view-id>/modules/personafisica.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/modules/personagiuridica.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>personagiuridica</from-outcome>
+            <to-view-id>/modules/personagiuridica.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/modules/cliente.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>cliente</from-outcome>
+            <to-view-id>/modules/cliente.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/modules/servizi.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>servizi</from-outcome>
+            <to-view-id>/modules/servizi.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/modules/serie_ticket.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>serieTicket</from-outcome>
+            <to-view-id>/modules/serie_ticket.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+  
+    <navigation-rule>
+        <from-view-id>/modules/ticket.jsp</from-view-id>
+        <navigation-case>
+            <from-outcome>ticket</from-outcome>
+            <to-view-id>/modules/ticket.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
+
+
+
+
+
+
+
+
+
+
+
+
+

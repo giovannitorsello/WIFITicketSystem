@@ -1,0 +1,39 @@
+{
+    'name': 'Spry Validation',
+    'type': 'Spry',
+    'version': '1.0',
+    'jmakiVersion': '1.0',
+    'image' : 'images/spry-validation.jpg',
+    'modelURL' : 'http://wiki.java.net/bin/view/Projects/jMakiValidationDataModel',
+    'description': 'This widget offers input validation for your forms',
+    'args': [],
+    'value': {
+        'required':'false', 
+        'type': 'OBJECT', 
+        'defaultValue':{}
+    },
+    'config' : {
+        'type': {
+            'id' : 'spry.validation',
+            'styles': [
+                '../resources/libs/spry/v1.6/checkboxvalidation/SpryValidationCheckbox.css',
+                '../resources/libs/spry/v1.6/radiovalidation/SpryValidationRadio.css',
+                '../resources/libs/spry/v1.6/confirmvalidation/SpryValidationConfirm.css',
+                '../resources/libs/spry/v1.6/passwordvalidation/SpryValidationPassword.css',
+                '../resources/libs/spry/v1.6/selectvalidation/SpryValidationSelect.css',
+                '../resources/libs/spry/v1.6/textareavalidation/SpryValidationTextarea.css',
+                '../resources/libs/spry/v1.6/textfieldvalidation/SpryValidationTextField.css'
+            ],
+            'libs': [ 
+                '../resources/libs/spry/v1.6/SpryDOMUtils.js',
+                '../resources/libs/spry/v1.6/SpryValidationCheckbox.js',
+                '../resources/libs/spry/v1.6/SpryValidationRadio.js',
+                '../resources/libs/spry/v1.6/SpryValidationConfirm.js',
+                '../resources/libs/spry/v1.6/SpryValidationPassword.js',
+                '../resources/libs/spry/v1.6/SpryValidationSelect.js',
+                '../resources/libs/spry/v1.6/SpryValidationTextarea.js',
+                '../resources/libs/spry/v1.6/SpryValidationTextField.js'
+            ]
+        }
+    }
+}

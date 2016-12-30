@@ -1,0 +1,45 @@
+{
+    "name": "Rich Text Editor",
+    "type": "Dojo Dijit",
+    "jmakiVersion" : "1.8.1",
+    "version" : "1.8.1",
+    "image": "images/dojo-dijit-editor.jpg",
+    "url" : "http://www.dojotoolkit.org",
+    "description": "This widget is a rich text editor component.",
+    "value": {"required": false, "type": "STRING", "defaultValue": "Edit Me Please"},
+    "args": [
+        {"toolbar":{"type":"STRING",
+            "description": "The toolbar type.",
+                "values": [
+                    {"name" : "Small", "value" : "small", "description" : "Small width toolbar."},
+                    {"name" : "Medium", "value" : "small", "description" : "Medium width toolbar."},
+                    {"name" : "Full", "value" : "small", "description" : "Full width toolbar. Over 700px."}
+                  ],
+                 "defaultValue": "small"
+              }
+           }
+    	],
+     "config" : {
+          "type" :
+           { "id" : "dijit",
+               "themes" : [
+                   {"id" : "blue",
+                    "default" : true,
+                    "style" : "../resources/libs/dojo/v1.2.0/dijit/themes/tundra/tundra.css"
+                   }
+               ],
+             "libs" : [
+                   "../resources/libs/dojo/v1.2.0/dojo/dojo.js"
+               ],
+               "preload" :  "djConfig={parseOnLoad: false, debugAtAllCosts: false, isDebug : false, extraLocale: [\"en-us\"]}",
+               "resources" : [
+                   "../resources/libs/dojo/v1.2.0/dojo",
+                   "../resources/libs/dojo/v1.2.0/dojox",
+                   "../resources/libs/dojo/v1.2.0/dijit"
+               ]
+          }  
+        },
+       "topicInfo": {
+       "defaultPublish" : "/dojo/dijit/editor",       "events" : [           {"name" :  "onSave",           "description" : "publish the value of the editor when a save occurs"}         ]    }
+   	
+};

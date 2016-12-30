@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+
+            <style>body .ui-widget{font-size: 0.8em;}</style>            
+                <p:panel id="panel_dati" header="Dati distributore e utente finale (WebSurfer)" toggleable="true">
+                        <h:panelGrid id="ticket_fields" columns="2" cellpadding="1">                                          
+                            <h:outputText value="cliente"/>
+                            <p:autoComplete id="ticket_ricerca" 
+                                    value="#{ticketController.cliente}"   
+                                    completeMethod="#{clienteController.autocompleteDenominazione}"
+                                    var="cli" itemLabel="#{cli.denominazione}" itemValue="#{cli}" 
+                                    converter="#{clienteConverter}"                                     
+                                    forceSelection="false">
+                                <p:ajax event="itemSelect" listener="#{ticketController.select_cliente()}" update="@form" /> 
+                            </p:autoComplete>
+                        </h:panelGrid>
+                        <h:panelGrid id="ticket_contact_fields" columns="6" cellpadding="1">                        
+                            <h:outputText value="web surfer"/>
+                            <p:inputText id="denominazione" label="Email" value="#{ticketController.webSurfer.denominazione}"/>
+                            
+                            <h:outputText value="email"/>
+                                <p:inputText id="email" label="Email" value="#{ticketController.webSurfer.email}"/>
+                                
+                                <h:outputText value="telefono"/>
+                                <p:inputText id="telefono" label="Telefono" value="#{ticketController.webSurfer.telefono}"/>
+                        </h:panelGrid>
+                        <h:panelGrid id="ticket_date" columns="4" cellpadding="1">                                                
+                            <h:outputText value="Data emissione"/>
+                            <p:calendar id="data_emissione" value="#{ticketController.ticket.dataEmissione}"/>
+                            
+                            <h:outputText value="Data scadenza"/>
+                            <p:calendar id="data_scadenza"  value="#{ticketController.ticket.dataScadenza}"/>                            
+                        </h:panelGrid>        
+ 
+                        <h:panelGrid id="ticket_note" columns="2" cellpadding="1">                                                
+                            <h:outputText value="note"/>
+                            <p:inputText id="note" label="Note" value="#{ticketController.webSurfer.note}"/>
+                        </h:panelGrid>        
+                        
+                        <p:commandButton id="create_ticket" value="Crea Ticket" 
+                                             actionListener="#{ticketController.create_ticket}"                                              
+                                             update="@form" />
+
+                        
+                </p:panel>
+                        
+                <p:panel id="panel_ticket_ricerca" header="Ricerca" toggleable="true">                            
+                    <p:autoComplete id="ricerca_ticket"
+                                    value="#{ticketController.ticket}"   
+                                    completeMethod="#{ticketController.autocompleteTicket}"
+                                    onselect=""
+                                    var="tck" itemLabel="#{tck.websurfer.denominazione}" itemValue="#{tck}" 
+                                    converter="#{ticketConverter}"                                     
+                                    forceSelection="true"
+                                    immediate="true">
+                            <p:ajax event="itemSelect" listener="#{ticketController.selectTicket}" update="@form" /> 
+                        </p:autoComplete>            
+                        <p:dataTable id="table_ticket_data" var="tck" value="#{ticketController.listTicket}" rowKey="#{tck.id}" paginator="true" rows="10" selection="#{ticketController.ticket}" selectionMode="single">   
+                            <p:ajax event="rowSelect" listener="#{ticketController.onRowSelectTicket}"      update="@form"/>  
+                            <p:ajax event="rowUnselect" listener="#{ticketController.onRowUnselectTicket}"  update="@form"/>  
+                
+                            <p:column selectionMode="single" style="width:2%" />
+                            <p:column headerText="Web surfer">#{tck.websurfer.denominazione}</p:column>  
+                            <p:column headerText="Email">#{tck.websurfer.email}</p:column>
+                            <p:column headerText="Telefono">#{tck.websurfer.telefono}</p:column>
+                            <p:column headerText="Seriale">#{tck.seriale} (#{tck.stato})</p:column>                              
+                            <p:column headerText="Utente">#{tck.login}</p:column>  
+                            <p:column headerText="Password">#{tck.password}</p:column>                              
+                            <p:column headerText="Emissione">
+                                <h:outputText value="#{tck.dataEmissione}" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:outputText>                                
+                            </p:column>  
+                            <p:column headerText="Scadenza">
+                                <h:outputText value="#{tck.dataScadenza}" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
+                                </h:outputText>                                
+                            </p:column>  
+                            <f:facet name="header">  
+                                <p:commandButton id="delete_ticket" value="Elimina" actionListener="#{ticketController.delete_ticket}"  update="@form" /> 
+                            </f:facet>
+                        </p:dataTable> 
+                </p:panel>            
+</ui:composition>

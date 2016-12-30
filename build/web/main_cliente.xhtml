@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">        
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>WifiNetCom Ticket Distribution System</title>
+            </f:facet>
+        </h:head>
+
+         
+        <h:body>
+            
+            <p:layout id="main_layout" fullPage="true">
+
+                <p:layoutUnit position="north" size="35" resizable="false" closable="false">
+                    <h:form id="form_logout">
+                    <table>
+                        <tr>
+                            <td>Sistema di gestione ticket WIFI Netcom</td>
+                            <td><p:commandButton style="position: absolute; right: 0px; top: 0px;" actionListener="#{authenticationController.logout()}" value="Esci"  ajax="false"/></td>
+                        </tr>
+                    </table>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
+                    <p style="vertical-align: top; font-size: 8px    ;">Giovanni Torsello - 2013 - WIFI Netcom</p>
+                </p:layoutUnit>
+                
+                <p:layoutUnit  visible="false" position="west" size="0" header="Menu" collapsible="true" style="font-size: 10px;">                                                                                
+                </p:layoutUnit>
+                      
+                <p:layoutUnit id="center" position="center" >                    
+                        <h:panelGroup id="content">                            
+                            <ui:include id="page_include" src="frontend_distributore.xhtml"/>
+                        </h:panelGroup>                    
+                </p:layoutUnit> 
+                
+            </p:layout>                        
+        </h:body>
+
+    </f:view>
+</html>
+

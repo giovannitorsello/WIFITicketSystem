@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/main_cliente.xhtml</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/torsello/NetBeansProjects/WIFITicketSystem/src/java/websocket/TicketServer.java</file>
+            <file>file:/home/torsello/NetBeansProjects/WIFITicketSystem/mikrotik/websocket.js</file>
+            <file>file:/home/torsello/NetBeansProjects/WIFITicketSystem/src/java/servlet/PhoneTicketActivator.java</file>
+            <file>file:/home/torsello/NetBeansProjects/WIFITicketSystem/mikrotik/ticket.html</file>
+            <file>file:/home/torsello/NetBeansProjects/WIFITicketSystem/src/java/websocket/TicketServerWebSocketConfigurator.java</file>
+        </group>
+    </open-files>
+</project-private>

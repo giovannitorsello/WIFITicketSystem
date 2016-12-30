@@ -1,0 +1,9 @@
+.jmk-dijit-editor{
+    height:100%;
+    position:relative;
+    overflow:auto;
+}
+
+.jmk-dijit-editor div iframe {
+   display : block;
+}

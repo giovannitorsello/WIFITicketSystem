@@ -1,0 +1,37 @@
+{
+    "name": "Accordion Container",
+    "type": "jquery",
+    "image" : "images/jquery-accordion.jpg",
+    "jmakiVersion" : "1.8.0",
+    "version" : "1.8.0",
+    "modelURL" : "http://wiki.java.net/bin/view/Projects/jMakiAccordionDataModel",
+    "description": "This widget is an accordion container which you can customize using inline text or URLs to resources.",
+    "value": {
+        "required": false,
+        "type": "OBJECT",
+        "defaultValue":{	
+            "items":[
+                {"label": "Books", "content": "Book content"},
+                {"label": "Magazines", "content": "Magazines here"},
+                {"label": "Newspaper", "content": "Newspaper content"}
+            ]
+        },
+        "description":"An object containing an array of row objects. Each object has a label property and may have a URL that maps to an external resource or a content attribute which contains inline text."
+     },
+     "hasCSS": false,
+     "config" : {
+        "type" : {
+            "id" : "jquery.ui",
+            "styles" : [
+                "../resources/libs/jquery/themes/gray/jquery-ui-themeroller.css"
+            ],
+            "libs" : [
+                "../resources/libs/jquery/jquery-1.2.6.pack.js",
+                "../resources/libs/jquery/jquery-ui-personalized-1.6rc2.packed.js"
+            ],
+           "resources" : [
+                "../resources/libs/jquery/themes/"
+            ]
+        }  
+    }
+}

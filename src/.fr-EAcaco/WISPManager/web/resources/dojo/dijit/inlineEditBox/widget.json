@@ -1,0 +1,59 @@
+{"name": "Inline Edit Box",
+         "type": "Dojo Dijit",
+         "image" : "images/dojo-dijit-inlineEditBox.jpg",
+         "jmakiVersion" : "1.8.1",
+         "version" : "1.8.1",                
+         "description": "This widget is dynamic spinner where the options that you can select using the keyboard or up and down buttons.",
+         "args": [
+            {"autoSave" : {
+               "type":"BOOLEAN", 
+                "description" : "Whether or not to display Save / Cancel Butons.",
+                "defaultValue" : true
+                }
+             },
+             {"allowMarkup" : {
+               "type":"BOOLEAN", 
+                "description" : "Whether or not to allow HTML markup.",
+                "defaultValue" : false
+                }
+             }
+          ],
+         "value": {
+             "required": true,
+             "type": "OBJECT",
+             "defaultValue":
+               { "content" : "Edit Me!!!"},
+             "description":"An object containing a content property. May include markup."
+     },
+          "config" : {
+          "type" :
+           { "id" : "dijit",
+               "themes" : [
+                   {"id" : "blue",
+                    "default" : true,
+                    "style" : "../resources/libs/dojo/v1.2.0/dijit/themes/tundra/tundra.css"
+                   }
+               ],
+             "libs" : [
+                   "../resources/libs/dojo/v1.2.0/dojo/dojo.js"
+               ],
+
+               "preload" : "djConfig={parseOnLoad: false, isDebug: false, extraLocale: [\"en-us\"]}",
+               "resources" : [
+                   "../resources/libs/dojo/v1.2.0/dojo",
+                   "../resources/libs/dojo/v1.2.0/dijit"
+               ]
+          }  
+        },
+	"topicInfo": {
+	    "defaultPublish": "/dojo/dijit/inlineEditBox",
+	     "defaultSubscribe" : ["/dojo/dijit/inlineEditBox"],
+         "commands" : [
+          {"name" : "setValue",
+          "description" : "Clears the text field and sets it to the value provided."},
+          {"name" : "clear",
+          "description" : "Clears the value of the textfield."
+          }
+      ]
+     }
+  }

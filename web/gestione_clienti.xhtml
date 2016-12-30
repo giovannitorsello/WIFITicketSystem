@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+            <style>body .ui-widget{font-size: 0.8em;}</style>               
+                <p:panel id="panel_dati" header="Dati struttura di distribuzione ticket" toggleable="true">
+                        <h:panelGrid id="cliente_fields" columns="4" cellpadding="2">                                          
+                            <h:outputText value="denominazione"/>
+                            <p:inputText id="denominazione" value="#{clienteController.cliente.denominazione}" />                    
+                    
+                            <h:outputText value="partitaiva" />
+                            <p:inputText id="partitaIva" value="#{clienteController.cliente.partitaIva}" />
+                    
+                            <h:outputText value="codice fiscale"/>
+                            <p:inputText id="codiceFiscale" value="#{clienteController.cliente.codiceFiscale}" />
+                    
+                            <h:outputText value="indirizzo" />
+                            <p:inputText id="indirizzoSede" value="#{clienteController.cliente.indirizzoSede}" />            
+                    
+                            <h:outputText value="comune" />
+                            <p:inputText id="comuneSede" value="#{clienteController.cliente.comuneSede}" />
+                    
+                            <h:outputText value="telefono" />
+                            <p:inputText id="numeroTelefono" value="#{clienteController.cliente.numeroTelefono}" />         
+                    
+                            <h:outputText value="fax" />
+                            <p:inputText id="fax" value="#{clienteController.cliente.fax}" />
+                    
+                            <h:outputText value="email" />
+                            <p:inputText id="email" value="#{clienteController.cliente.email}" />
+                    
+                            <h:outputText value="Web page" />
+                            <p:inputText id="web" value="#{clienteController.cliente.web}" />
+                    
+                            <h:outputText value="note" />
+                            <p:inputText id="note" value="#{clienteController.cliente.note}" />
+                    
+                            <p:commandButton value="Salva" actionListener="#{clienteController.save_cliente()}" update="@form"/>
+                        </h:panelGrid>        
+                </p:panel>
+                        
+                <p:panel id="panel_ricerca" header="Ricerca" toggleable="true">                            
+                        <p:autoComplete id="ricerca" 
+                                    value="#{clienteController.cliente}"   
+                                    completeMethod="#{clienteController.autocompleteDenominazione}"
+                                    var="cli" itemLabel="#{cli.denominazione}" itemValue="#{cli}" 
+                                    converter="#{clienteConverter}"                                     
+                                    forceSelection="false">
+                            <p:ajax event="itemSelect" listener="#{clienteController.selectCliente}" update="table_clienti" /> 
+                        </p:autoComplete>            
+                           <p:dataTable id="table_clienti" var="cli" value="#{clienteController.listCliente}" rowKey="#{cli.id}" paginator="true" rows="10" selection="#{clienteController.cliente}" selectionMode="single">   
+                            <p:ajax event="rowSelect" listener="#{clienteController.onRowSelectCliente}"      update="@form"/>  
+                            <p:ajax event="rowUnselect" listener="#{clienteController.onRowUnselectCliente}"  update="@form"/>  
+                
+                            <p:column selectionMode="single" style="width:2%" />
+                            <p:column headerText="Denominazione">#{cli.denominazione}</p:column>  
+                            <p:column headerText="C.F.">#{cli.codiceFiscale}</p:column>  
+                            <p:column headerText="P.I.">#{cli.partitaIva}</p:column>  
+                            <p:column headerText="email">#{cli.email}</p:column>  
+                            <p:column headerText="telefono">#{cli.numeroTelefono}</p:column>  
+                            <f:facet name="header">  
+                                <p:commandButton id="delete" value="Elimina" actionListener="#{clienteController.delete_cliente}"  update="@form" /> 
+                            </f:facet>
+                        </p:dataTable> 
+                </p:panel>                            
+</ui:composition>

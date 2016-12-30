@@ -1,0 +1,62 @@
+ {
+    "name": "Tree",
+    "type": "Dojo Dijit",
+    "jmakiVersion" : "1.8.1",
+    "version" : "1.8.1",
+    "image": "images/dojo-dijit-tree.jpg",
+    "docs": {
+    	"modelURL" : "http://wiki.java.net/bin/view/Projects/jMakiTreeDataModel"
+    },
+    "description": "This widget is dynamic tree that can easily be configured.",
+    "value": {
+      "required": true,
+      "type": "OBJECT",
+      "defaultValue":{ 
+     	"root":{"label": "Default Tree Root Node",
+     			"expanded": true,
+     			"children": [
+     				{"label":"Node 1.1", "action": {"message":"foo"}},
+     				{"label":"Node 1.2", "children": [{"label":"Node 3.1"}]}
+     			] 
+     		}
+     	}
+     },
+     "config" : {
+          "type" :
+           { "id" : "dijit",
+               "themes" : [
+                   {"id" : "blue",
+                    "default" : true,
+                    "style" : "../resources/libs/dojo/v1.2.0/dijit/themes/tundra/tundra.css"
+                   }
+               ],
+             "libs" : [
+                   "../resources/libs/dojo/v1.2.0/dojo/dojo.js"
+               ],
+               "preload" : "djConfig={parseOnLoad: false, isDebug: false, extraLocale: [\"en-us\"]}",
+               "resources" : [
+                   "../resources/libs/dojo/v1.2.0/dojo",
+                   "../resources/libs/dojo/v1.2.0/dojox",
+                   "../resources/libs/dojo/v1.2.0/dijit"
+               ]
+          }  
+        },
+       "topicInfo": {
+       "defaultPublish" : "/dojo/dijit/tree",       "defaultSubscribe" : ["/dojo/dijit/tree", "/tree"],
+      "commands" : [
+          {"name" : "addNodes",
+          "description" : "Adds a node or subtree to the node matching the provided id in the tree."},
+          {"name" : "removeNode",
+          "description" : "Removes the node matching the provided id in the tree. "},
+          {"name" : "removeChildren",
+          "description" : "Remove the subtree matching the provided id in the tree. "},
+          {"name" : "expandNode",
+          "description" : "Expand the node matching the id provided."
+          },
+          {"name" : "collapseNode",
+          "description" : "Collapse the node matching the id provided."
+          }
+      ],       "events" : [           {"name" :  "onExpand",           "description" : "publish the label of the expanded node."},
+           {"name" :  "onCollapse",           "description" : "publish the label of the collapsed node."},
+           {"name" :  "onClick",           "description" : "publish the label of the selected node."}         ]    }
+}

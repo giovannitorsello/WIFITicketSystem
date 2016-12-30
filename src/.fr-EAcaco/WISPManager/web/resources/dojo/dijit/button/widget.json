@@ -1,0 +1,70 @@
+{"name": "Button",
+         "type": "Dojo Dijit",
+         "image" : "images/dojo-dijit-button.jpg",
+         "jmakiVersion" : "1.8.1",
+         "version" : "1.8.1",
+          "docs" : {
+     		"modelURL" : "http://wiki.java.net/bin/view/Projects/jMakiButtonDataModel",
+		 },                 
+         "description": "A button widget that allows button comboButton and dropDownButton",
+         "args": [
+           {"topic":{
+            "type":"STRING",
+                     "defaultValue" : "/dojo/dijit/button",
+                      "description": "The topic published to"}},
+            {"label":{
+             "type":"STRING",
+                    "defaultValue": "Click Me",
+                    "description": "The label for the button"}},
+             {"type":{
+                "type":"STRING",
+                "defaultValue": "button",
+                "description": "The type of button to display",
+                "values": [
+                    {"value": "button", "description" : "Standard clickable button"},
+                    {"value": "dropDownButton", "description": "Drop down menu button"},
+                    {"value": "comboButton", "description": "Combo button"}
+                ]
+                 
+             }}
+            ],
+          "value" : {
+            "type" : "OBJECT",
+            "defaultValue" :{
+                "menu" : [
+                    {"label" : "Menu1", "action" : { "topic" : "/dojo/dijit/button/onClick", "message" : { "targetId" : "default"}}},
+                    {"label" : "Menu2", "href" : "/test.jsp"},
+                    {"label" : "Menu3", "action" : { "topic" : "/dojo/dijit/button/onClick"}}
+                ]
+            }
+          },
+          "config" : {
+          "type" :
+           { "id" : "dijit",
+               "themes" : [
+                   {"id" : "blue",
+                    "default" : true,
+                    "style" : "../resources/libs/dojo/v1.2.0/dijit/themes/tundra/tundra.css"
+                   }
+               ],
+             "libs" : [
+                   "../resources/libs/dojo/v1.2.0/dojo/dojo.js"
+               ],
+
+               "preload" : "djConfig={parseOnLoad: false, isDebug: false, extraLocale: [\"en-us\"]}",
+               "resources" : [
+                   "../resources/libs/dojo/v1.2.0/dojo",
+                   "../resources/libs/dojo/v1.2.0/dijit"
+               ]
+          }  
+        },
+    "topicInfo": {
+       "defaultPublish" : "/dojo/dijit/button",
+       "defaultSubscribe": "/dojo/dijit/button",
+       "description":"on onclick event publish to /dojo/dijit/button topic passing the cooresponding string for the button  selected.",
+       "commands": [
+       {"name": "setLabel",
+        "description": "set the label of the button programmatically"}
+       ],       "events" : [           {"name" :  "onClick",           "description" : "publish the id of the button"}        ]
+    }  
+  }

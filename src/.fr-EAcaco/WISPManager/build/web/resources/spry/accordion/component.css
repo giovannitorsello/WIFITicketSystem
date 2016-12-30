@@ -1,0 +1,56 @@
+.AquaAccordionTab {
+    height: 24px;
+    background-image: url(images/aqua-gradient.gif);
+    background-repeat: repeat-x;
+    background-color: #6dc1fc;
+    border-top: solid 1px black;
+    border-bottom: solid 1px gray;
+    margin: 0;
+    padding: 2px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    text-align: center;
+}
+.GreenAccordionTab {
+    height: 24px;
+    background-image: url(images/green-gradient.gif);
+    background-repeat: repeat-x;
+    background-color: #69FA71;
+    border-top: solid 1px black;
+    border-bottom: solid 1px gray;
+    margin: 0;
+    padding: 2px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    text-align: center;
+}
+.BlueAccordionTab {
+    height: 24px;
+    background-image: url(images/blue-gradient.gif);
+    background-repeat: repeat-x;
+    background-color: #6B98FF;
+    border-top: solid 1px black;
+    border-bottom: solid 1px gray;
+    margin: 0;
+    padding: 2px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    text-align: center;
+}
+.GrayAccordionTab {
+    height: 24px;
+    background-image: url(images/gray-gradient.gif);
+    background-repeat: repeat-x;
+    background-color: #FEFEFD;
+    border-top: solid 1px black;
+    border-bottom: solid 1px gray;
+    margin: 0;
+    padding: 2px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    text-align: center;
+}

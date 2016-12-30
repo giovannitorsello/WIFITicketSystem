@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>WIFI Ticket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <script src="./websocket.js"></script>
+        <script src="./jquery-ui/jquery.js"></script>
+        <script src="./jquery-ui/jquery-ui.min.js"></script>
+        <script>
+            $( document ).ready(function() {
+                openSocket();                    
+                $("#medium_phase").hide();
+                $("#pin_phase").hide();
+                $("#final_phase").hide();                
+                $("#error").hide();    
+            });
+            
+            
+        $('#go_internet').click(go_on_internet);
+        function go_on_internet()
+        {
+                $('#form_login').submit();
+                location.href = $("#webpage").attr("href");
+                
+        }
+        </script>
+        <div id="first_phase" style="text-align: center;">
+            <p>Fill carefully the following form</p>            
+            <p>Compila con attenzione il form seguente</p>                        
+            
+            <form id="form_medium_phase">
+                <input type="hidden" id="customer" name="customer" value="torsello"/>                
+                <div>
+                    <div><label for="phone">Phone</label></div>
+                    <div><input type="text" id="phone" name="phone" /></div>
+                </div>
+                <div>
+                    <div><label for="phone">Email</label></div>
+                    <div><input type="text" id="email" name="email" /></div>
+                </div>
+                <div><button id="send_phone" onclick="request_access();">Send</button></div>
+            </form>
+        </div>
+        
+        <div id="medium_phase" style="text-align: center ;">
+            <p>Chiama dal tuo telefono al <a href="tel:08331855674">0833 185 56 74</a></p>            
+            <p>Make a call by your phone to <a href="tel:003908331855674">(00)39(0)833 185 56 74</a></p>                        
+        </div>
+        
+        <div id="pin_phase" style="text-align: center ;">
+            <p>Type the following PIN code</p>            
+            <p>Scrivi il codice PIN</p>            
+            <p id="pin_code"></p>
+        </div>
+        
+        <div id="final_phase"  style="text-align: center;">                       
+            <form id="form_login" name="login" action="$(link-login-only)" method="post" autocomplete="off">
+                <input type="hidden" name="popup" value="true" />
+                <div>
+                    <label for="username">Username</label>                
+                    <input type="text" id="username" name="username" />
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" />
+                </div>
+                <div>
+                    <input type="button" id="go_internet" value="Go"/>
+                </div>
+            </form>
+            <div><a id="webpage" href="">Go</a></div>
+                       
+        </div>
+             
+        <div id="error">
+            <p>Sorry!!</p>
+            <p>Delete the cookies in your browser. Close and retry.</p>            
+        </div>
+        
+    <script>
+        
+    </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+
+            <style>body .ui-widget{font-size: 0.8em;}</style>            
+                <p:panel id="panel_dati" header="Dati per configurazione server radius (non modificare)" toggleable="true">
+                        <h:panelGrid id="server_fields" columns="4" cellpadding="2">                                          
+                            <h:outputText value="server"/>
+                            <p:inputText id="server" value="#{radiusController.radius.serverRadius}" />                    
+
+                            <h:outputText value="tabella credenziali"/>
+                            <p:inputText id="table" value="#{radiusController.radius.tableRadius}" />                    
+                            
+                            <h:outputText value="Utente"/>
+                            <p:inputText id="utente" value="#{radiusController.radius.utente}" />                    
+                        
+                            <h:outputText value="password"/>
+                            <p:inputText id="password" value="#{radiusController.radius.password}" />                    
+                        
+                            <h:outputText value="template di inserimento"/>                            
+                            <p:inputTextarea id="insert" value="#{radiusController.radius.queryInsert}" />                    
+
+                            <h:outputText value="template di rimozione"/>
+                            <p:inputTextarea id="remove" value="#{radiusController.radius.queryRemove}" />                    
+                              
+                            <p:commandButton value="Salva" actionListener="#{radiusController.save_radius()}" update="@form"/>
+                        </h:panelGrid>        
+                </p:panel>
+</ui:composition>

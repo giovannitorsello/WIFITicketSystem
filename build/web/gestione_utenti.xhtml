@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+
+            <style>body .ui-widget{font-size: 0.8em;}</style>            
+                <p:panel id="panel_dati" header="Dati degli utenti di accesso al sistema" toggleable="true">
+                        <h:panelGrid id="cliente_fields" columns="4" cellpadding="2">                                          
+                            <h:outputText value="cliente"/>
+                            <p:autoComplete id="ricerca" 
+                                    value="#{clienteController.cliente}"   
+                                    completeMethod="#{clienteController.autocompleteDenominazione}"
+                                    var="cli" itemLabel="#{cli.denominazione}" itemValue="#{cli}" 
+                                    converter="#{clienteConverter}"                                     
+                                    forceSelection="false">
+                            <p:ajax event="itemSelect" listener="#{clienteController.selectCliente}" update="@form" /> 
+                            </p:autoComplete>
+
+                            <h:outputText value="utente"/>
+                            <p:inputText id="utente" value="#{clienteController.user.utente}" required="true" requiredMessage="inserisci campo"/>
+                        
+                            <h:outputText value="password"/>
+                            <p:inputText id="password" value="#{clienteController.user.password}" required="true" requiredMessage="inserisci campo"/>                    
+
+                            <h:outputText value="amministratore"/>                            
+                            <p:selectBooleanCheckbox id ="privilegi" value="#{clienteController.user.admin}" />  
+                              
+                            <p:commandButton value="Salva" actionListener="#{clienteController.save_utente()}" update="@form"/>
+                        </h:panelGrid>        
+                </p:panel>
+                        
+                <p:panel id="panel_ricerca" header="Ricerca" toggleable="true">                            
+                        <p:autoComplete id="ricerca_user" 
+                                    value="#{clienteController.cliente}"   
+                                    completeMethod="#{clienteController.autocompleteDenominazione}"
+                                    var="cli" itemLabel="#{cli.denominazione}" itemValue="#{cli}" 
+                                    converter="#{clienteConverter}"                                     
+                                    forceSelection="false">
+                            <p:ajax event="itemSelect" listener="#{clienteController.selectCliente}" update=":form_data" /> 
+                        </p:autoComplete>            
+                        <p:dataTable id="table_user_data" var="usr" value="#{clienteController.listUtente}" rowKey="#{usr.id}" paginator="true" rows="10" selection="#{clienteController.user}" selectionMode="single">   
+                            <p:ajax event="rowSelect" listener="#{clienteController.onRowSelectUtente}"      update="@form"/>  
+                            <p:ajax event="rowUnselect" listener="#{clienteController.onRowUnselectUtente}"  update="@form"/>  
+                
+                            <p:column selectionMode="single" style="width:2%" />
+                            <p:column headerText="Cliente">#{usr.cliente.denominazione} (#{usr.cliente.partitaIva})</p:column>  
+                            <p:column headerText="Utente">#{usr.utente}</p:column>  
+                            <p:column headerText="Password">#{usr.password}</p:column>  
+                            <p:column headerText="admin">#{usr.admin}</p:column>  
+                            <f:facet name="header">  
+                                <p:commandButton id="delete" value="Elimina" actionListener="#{clienteController.delete_utente}"  update="@form" /> 
+                            </f:facet>
+                        </p:dataTable> 
+                </p:panel>            
+</ui:composition>
